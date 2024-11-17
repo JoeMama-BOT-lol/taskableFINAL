@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --app-zoom: 1;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Center content when zoomed */
+main {
+  margin: 0 auto !important;
+  transform-origin: top center !important;
+}
+
+/* Fixed positioning for menus */
+.todo-menu-button {
+  position: sticky;
+  right: 0;
+  background: inherit;
+  margin-left: auto;
+  padding-left: 8px;
+  z-index: 10;
+}
+
+/* Menu positioning */
+.radix-dropdown-content,
+[data-radix-popper-content-wrapper] {
+  transform-origin: top right !important;
+}
+
+/* Ensure dropdown is properly positioned */
+.todo-dropdown-content {
+  position: absolute !important;
+  right: 0 !important;
+  top: 100% !important;
+  margin-top: 4px !important;
+  transform-origin: top right !important;
+}
+
+/* Calendar positioning */
+.calendar-popover {
+  position: absolute !important;
+  right: calc(100% + 8px) !important;
+  top: 0 !important;
+  transform-origin: top right !important;
+}
+
+/* Calendar styles */
+.rdp {
+  --rdp-cell-size: 32px;
+  --rdp-accent-color: #3b82f6;
+  --rdp-background-color: #e5e7eb;
+  margin: 0;
+}
+
+.dark .rdp {
+  --rdp-accent-color: #60a5fa;
+  --rdp-background-color: #374151;
+  color: white;
+}
+
+.rdp-day_selected, 
+.rdp-day_selected:focus-visible, 
+.rdp-day_selected:hover {
+  background-color: var(--rdp-accent-color);
+  color: white;
+}
+
+.rdp-day_today {
+  font-weight: bold;
+}
+
+.rdp-day_today:not(.rdp-day_selected) {
+  border: 1px solid var(--rdp-accent-color);
+  border-radius: 100%;
+}
+
+/* Animation styles */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Header styles */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rem;
+  z-index: 50;
+  transition: all 300ms;
+}
+
+.app-header.with-sidebar {
+  padding-left: 16rem;
+}
